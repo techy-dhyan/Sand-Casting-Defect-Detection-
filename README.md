@@ -1,57 +1,184 @@
-# Smart Foundry AI System (SmartCasting)
+# 🏆 AI-Based Sand Mould Defect Detection & Prediction System
 
-An AI-powered predictive and automated inspection system designed for Industry 4.0 casting manufacturing. This project integrates IoT sensors, computer vision, and machine learning to optimize foundry operations and reduce casting defects.
-
-## 🚀 Key Features
-
-- **AI-Driven Defect Prediction**: Utilizes deep learning models to predict casting defect risks based on real-time manufacturing parameters.
-- **Automated Visual Inspection**: High-precision computer vision system (ResNet50-based) to identify surface defects like blowholes, scabs, and porosity from casting images.
-- **Live IoT Sensor Integration**: Seamless connection with ESP32-based hardware for real-time monitoring of critical parameters like furnace temperature and sand moisture.
-- **Smart Manufacturing Recommendations**: Dynamic, actionable advice provided for every detected defect to help engineers stabilize the process immediately.
-- **Modern Industrial Dashboard**: High-performance React dashboard with a sleek, glassmorphism-inspired UI for intuitive monitoring and analysis.
-- **Multifaceted Process Analysis**: Analyzes complex variables including moisture percentage, permeability, mold hardness, and pouring temperature.
-
-## 🛠️ Technology Stack
-
-- **Frontend**: React.js, Vite, Lucide React (Icons), Axios, CSS (Glassmorphism)
-- **Backend**: Python, Flask, Flask-CORS
-- **Machine Learning**: TensorFlow/Keras, Scikit-Learn, OpenCV, NumPy, Joblib
-- **Hardware**: ESP32, Analog Moisture Sensors, WiFi-based HTTP Communication
-- **Models**: CNN (ResNet50) for Image Classification, Neural Networks for Process Parameter Prediction
-
-## 📁 Project Structure
-
-```text
-SmartCasting/
-├── frontend/          # React + Vite Dashboard
-├── backend/           # Flask API Service
-│   ├── models/        # Trained ML/DL Models
-│   └── utils/         # Prediction Logic & Preprocessing
-└── hardware/          # ESP32 Firmware (Arduino/C++)
-```
-
-## 🔌 Setup Instructions
-
-### Backend
-1. Navigate to `SmartCasting/backend`.
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Start the server: `python app.py`. (Runs on port 5000)
-
-### Frontend
-1. Navigate to `SmartCasting/frontend`.
-2. Install dependencies: `npm install`.
-3. Start the dev server: `npm run dev`.
-
-### Hardware (Optional)
-1. Open `hardware/esp32_sensor/esp32_sensor.ino` in Arduino IDE.
-2. Update Wi-Fi credentials and backend IP address.
-3. Flash to ESP32 board.
-
-## 📝 Predicted Defect Types & Actions
-- **Blowhole**: Reduce sand moisture below 5% and improve venting.
-- **Sand Wash**: Increase mold hardness and reduce pouring rate.
-- **Scab**: Reduce pouring temperature and check sand expansion.
-- **Porosity**: Improve degassing process and reduce pouring temperature.
+This project was developed during **SREC Innovate – Industrial Hackathon**, where we secured **1st Prize** 🥇 for solving a real-world problem provided by **Indoshell Mould Limited**.
 
 ---
-*Built for Industry 4.0 Manufacturing Excellence.*
+
+## 📌 Problem Statement
+
+**“Major rejection reduction – Sand defects in the top 3 rejection parts”**
+
+In foundries, defects originating from sand moulds (such as cracks, erosion, and improper compaction) lead to high rejection rates in casting products. Detecting these issues early can significantly improve production quality and reduce waste.
+
+---
+
+## 💡 Solution Overview
+
+We developed a **hybrid AI + IoT system** that:
+
+- **Predicts defects before casting** using process parameters  
+- **Detects defects after casting** using computer vision  
+- **Monitors real-time sand conditions** using sensors  
+
+This enables **predictive and preventive quality control** in foundries.
+
+---
+
+## ⚙️ System Architecture
+
+    ┌────────────────────┐
+    │  IoT Sensors       │
+    │ (Moisture, Temp)   │
+    └─────────┬──────────┘
+              │
+              ▼
+    ┌────────────────────┐
+    │  ANN Model         │
+    │ (Defect Prediction)│
+    └─────────┬──────────┘
+              │
+              ▼
+    ┌────────────────────┐
+    │  Decision System   │
+    │ (Accept / Reject)  │
+    └─────────┬──────────┘
+              │
+              ▼
+    ┌────────────────────┐
+    │  Camera Input      │
+    └─────────┬──────────┘
+              │
+              ▼
+    ┌────────────────────┐
+    │  ResNet50 Model    │
+    │ (Defect Detection) │
+    └────────────────────┘
+
+
+---
+
+## 🔬 Key Features
+
+- 📊 **Predictive Analysis** using ANN  
+- 👁️ **Visual Inspection** using ResNet50  
+- 🌡️ **Real-time Monitoring** with IoT sensors  
+- ⚡ **Early defect prevention before casting**  
+- 🏭 **Industry-relevant solution**
+
+---
+
+## 🧠 Methodology
+
+### 1. Industry Research
+- Visited a nearby foundry to understand sand moulding processes  
+- Identified key parameters affecting mould quality  
+
+---
+
+### 2. Dataset Creation
+- Created a **synthetic dataset** based on critical parameters:
+  - Moisture
+  - Temperature
+  - Permeability *(or your parameter)*
+  - Compaction *(or your parameter)*
+
+---
+
+### 3. ANN Model (Prediction)
+- Input: Process parameters  
+- Output: Defective / Non-defective prediction  
+- Goal: Prevent defects before casting  
+
+---
+
+### 4. Computer Vision Model
+- Model: **ResNet50 (Transfer Learning)**
+- Task: Detect defects in casting products  
+- Classes: Defective / Non-defective  
+
+---
+
+### 5. IoT Integration
+- Sensors used:
+  - *(Add your sensors here, e.g., DHT11, Soil Moisture Sensor)*  
+- Purpose:
+  - Capture real-time sand conditions  
+  - Feed data into prediction model  
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- TensorFlow / PyTorch  
+- OpenCV  
+- Arduino / ESP32  
+- IoT Sensors  
+- Streamlit (optional dashboard)
+
+---
+
+## 📈 Results
+
+- Successfully demonstrated:
+  - Real-time defect prediction  
+  - Visual defect detection  
+  - Integration of AI + IoT  
+
+- Achieved a working prototype within hackathon timeframe  
+
+---
+
+## 🚀 Future Improvements
+
+- Collect larger real-world dataset from foundries  
+- Improve model accuracy with advanced architectures (YOLO, EfficientNet)  
+- Deploy as a real-time industrial monitoring system  
+- Integrate cloud dashboard for remote monitoring  
+
+---
+
+## 📂 Project Structure
+
+├── dataset/
+├── models/
+├── ann_model/
+├── resnet_model/
+├── iot_integration/
+├── app/
+└── README.md
+
+
+---
+
+## 📌 How to Run
+
+1. Clone the repository:
+
+
+2. Install dependencies:
+pip install -r requirements.txt
+
+
+3. Run the application:
+python app.py
+
+
+---
+
+## 🙌 Acknowledgements
+
+- SREC Innovate Hackathon organizers  
+- Indoshell Mould Limited for the problem statement  
+- Foundry professionals for sharing practical insights  
+
+---
+
+## 📬 Contact
+
+Feel free to connect for collaboration or queries!
+
+---
+
+⭐ If you found this project interesting, consider giving it a star!
+
